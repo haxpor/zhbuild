@@ -73,6 +73,10 @@ elif [[ "$1" == "debug" ]] && [[ "$2" == "ipad" ]]; then
 
 # 'debug' with simulator
 elif [[ "$1" == "debug" ]] && [[ "$2" == "sim" ]]; then
+    # Remove all of previous ios-sim process
+    echo "Kill all previous ios-sim processes ..."
+    kill -9 $(ps -ef | grep ios-sim | awk '{print $2}')
+
     echo "Building onto simulator ..."
     #buid the project first
     (cd $WPATH && exec xcodebuild -project $XCODEPROJ_NAME -xcconfig $FASTDEBUG_SIM_XCCONFIG_PATH -scheme "ZombieHero - Fast Build" -configuration Debug -destination "platform=iphonesimulator,OS=8.4,id=3CD97526-5E6A-4670-A89F-D68A446BDF66" -verbose)
