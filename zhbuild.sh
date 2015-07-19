@@ -88,7 +88,7 @@ elif [[ "$1" == "debug" ]] && [[ "$2" == "sim" ]]; then
     echo "Remove the previous log ..."
     rm -rf $IOS_SIM_TMP_LOG
     echo "Running simulator with log ..."
-    ios-sim launch /Users/haxpor/Library/Developer/Xcode/DerivedData/ZombieHero-erdynsruzgedcidywngbikwfyczm/Build/Products/Debug-iphonesimulator/Zombie\ Hero\ -\ Fast\ Build.app --devicetypeid $SIMULATOR_DEVICETYPEID --log ./.ios-sim-log &
+    ios-sim launch /Users/haxpor/Library/Developer/Xcode/DerivedData/ZombieHero-erdynsruzgedcidywngbikwfyczm/Build/Products/Debug-iphonesimulator/Zombie\ Hero\ -\ Fast\ Build.app --devicetypeid $SIMULATOR_DEVICETYPEID --log $IOS_SIM_TMP_LOG &
     echo "Launching lldb and wait for the process to attach ..."
     lldb -n "$PRODUCT_NAME" -w
 
