@@ -12,7 +12,7 @@ PRODUCT_PATH="/Users/haxpor/Library/Developer/Xcode/DerivedData/ZombieHero-erdyn
 PRODUCT_NAME="Zombie Hero - Fast Build"
 ARCHIVE_PATH="~/Desktop/ZombieHero.xarchive"
 EXPORT_PATH="~/Desktop/ZombieHero.ipa"
-PROVISIONING_PROFILE_NAME="10ffa923-c4cc-4cb6-82e1-503ce585d53e"
+PROVISIONING_PROFILE_NAME="XC Ad Hoc: org.haxpor.ZombieHero"
 SIMULATOR_DEVICETYPEID="iPhone-6-Plus, 8.4"
 IOS_SIM_TMP_LOG="/tmp/ios-sim-log"
 
@@ -32,12 +32,12 @@ elif [ "$1" == "build-sim" ]; then
 # 'archive'
 elif [ "$1" == "archive" ]; then
     # archive the proejct
-    (cd $WPATH && exec xcodebuild -project $XCODEPROJ_NAME -scheme "ZombieHero Beta" archivePath $ARCHIVE_PATH archive -verbose)
+    (cd $WPATH && exec xcodebuild -project $XCODEPROJ_NAME -scheme "ZombieHero Beta" -archivePath $ARCHIVE_PATH archive -verbose)
 
 # 'export'
 elif [ "$1" == "export" ]; then
     # export into .ipa file from archive resulted of 'archive' command
-    (cd $WPATH && exec xcodebuild -exportArchive -archivePath $ARCHIVE_PATH.xcarchive -exportPath $EXPORT_PATH -exportFormat ipa -exportProvisioningProfile $PROVISIONING_PROFILE_NAME)
+    (cd $WPATH && exec xcodebuild -exportArchive -archivePath $ARCHIVE_PATH.xcarchive -exportPath $EXPORT_PATH -exportFormat ipa -exportProvisioningProfile "$PROVISIONING_PROFILE_NAME")
 
 # 'clean'
 elif [ "$1" == "clean" ]; then
